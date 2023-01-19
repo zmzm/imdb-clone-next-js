@@ -1,1 +1,1 @@
-# imdb-clone-next-js
+# IMDB clone using Next.js and Tailwind CSS
