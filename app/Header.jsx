@@ -1,19 +1,19 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 const Header = () => {
   return (
-    <header className="sticky">
-      <div className="flex w-full h-12 items-center mx-14 mt-10">
+    <header className="absolute z-10 w-full px-14 ">
+      <div className="flex w-full h-12 items-center mt-10 rounded-lg bg-gray-50/70">
         <Image
           src="/logo.svg"
           alt="Site logo"
           width={70}
           height={25}
-          className="mr-14"
+          className="ml-2 mr-14"
         />
         <Link className="mr-8 text-base" href="/">
           Home

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .inherit-height {
+    height: inherit;
+  }
+
+  .transform-center {
+    transform: translate(35%, 45%);
+  }
+
+  .carousel-image-width {
+    width: 1400px !important;
+  }
+}
