@@ -1,9 +1,9 @@
-'use client';
-
 import React from 'react';
 import Movie from './Movie';
 
-const Movies = ({ data }) => {
+const Movies = async ({ dataPromise }) => {
+  const { results: data } = await dataPromise;
+
   const renderMovies = () =>
     data.map((movie) => (
       <Movie

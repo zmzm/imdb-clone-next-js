@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { getTopRatedMovies, getTrandingMovies } from '../utils/requests';
 import Carousel from './Carousel';
 import Movies from './Movies';
 
 const Home = async () => {
-  const trandingMovies = await getTrandingMovies();
-  const topRatedMovies = await getTopRatedMovies();
+  const { results: trandingMovies } = await getTrandingMovies();
+  const topRatedMovies = getTopRatedMovies();
 
   return (
     <>
-      <Carousel data={trandingMovies.results} />
-      <Movies data={topRatedMovies.results} />
+      <Carousel data={trandingMovies} />
+      <Suspense fallback={<div>Loading top rated movies...</div>}>
+        <Movies dataPromise={topRatedMovies} />
+      </Suspense>
     </>
   );
 };
