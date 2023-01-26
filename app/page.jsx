@@ -1,22 +1,18 @@
 import React from 'react';
+import { getTopRatedMovies, getTrandingMovies } from '../utils/requests';
 import Carousel from './Carousel';
-
-async function getData() {
-  const res = await fetch(`
-  https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.API_KEY}&language=en-US}
-  `);
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
+import Movies from './Movies';
 
 const Home = async () => {
-  const data = await getData();
+  const trandingMovies = await getTrandingMovies();
+  const topRatedMovies = await getTopRatedMovies();
 
-  return <Carousel data={data.results} />;
+  return (
+    <>
+      <Carousel data={trandingMovies.results} />
+      <Movies data={topRatedMovies.results} />
+    </>
+  );
 };
 
 export default Home;
