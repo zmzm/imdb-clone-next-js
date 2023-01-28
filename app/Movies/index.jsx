@@ -1,13 +1,14 @@
 import React from 'react';
-import Movie from './Movie';
+import MovieCard from './MovieCard';
 
 const Movies = async ({ dataPromise }) => {
   const { results: data } = await dataPromise;
 
   const renderMovies = () =>
     data.map((movie) => (
-      <Movie
+      <MovieCard
         key={movie.id}
+        id={movie.id}
         title={movie.title}
         date={movie.release_date}
         posterPath={movie.poster_path}

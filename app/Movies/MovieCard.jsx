@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import React from 'react';
 
-const Movie = ({ posterPath, title, id, date }) => {
+const MovieCard = ({ posterPath, title, id, date }) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original';
 
   return (
@@ -8,7 +9,7 @@ const Movie = ({ posterPath, title, id, date }) => {
       key={id}
       className="w-48 mb-10 shadow-xl rounded-md border border-solid"
     >
-      <a href={id} className="group">
+      <Link href={`/movie/${id}`} className="group">
         <img
           className="group-hover:cursor-pointer w-full h-60 rounded-t-md"
           src={`${BASE_URL}${posterPath}`}
@@ -22,9 +23,9 @@ const Movie = ({ posterPath, title, id, date }) => {
             {new Date(date).toDateString()}
           </p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
 
-export default Movie;
+export default MovieCard;

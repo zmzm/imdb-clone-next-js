@@ -4,6 +4,7 @@ import React from 'react';
 import { Carousel as ResponsiveCarousel } from 'react-responsive-carousel';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Link from 'next/link';
 
 const Carousel = ({ data }) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original';
@@ -39,20 +40,21 @@ const Carousel = ({ data }) => {
         )}
       >
         {data.map((item, index) => (
-          <div
-            key={`slide${index + 1}`}
-            className="relative h-[650px]"
-            style={{
-              backgroundImage: `url(${BASE_URL}${item.backdrop_path})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-            }}
-          >
-            <div className="absolute top-[20%] w-[30%] transform-center rounded-lg bg-gray-50/70 p-3">
-              <p className="font-bold text-3xl">{item.name || item.title}</p>
-              <p className="text-lg">{item.overview}</p>
+          <Link key={`slide${index + 1}`} href={`/movie/${item.id}`}>
+            <div
+              className="relative h-[650px]"
+              style={{
+                backgroundImage: `url(${BASE_URL}${item.backdrop_path})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center',
+              }}
+            >
+              <div className="absolute top-[20%] w-[30%] transform-center rounded-lg bg-gray-50/70 p-3">
+                <p className="font-bold text-3xl">{item.name || item.title}</p>
+                <p className="text-lg">{item.overview}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </ResponsiveCarousel>
     </div>

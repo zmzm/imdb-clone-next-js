@@ -15,3 +15,27 @@
     width: 1400px !important;
   }
 }
+
+@layer components {
+  .movie-detail {
+    position: relative;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-origin: border-box !important;
+    background-clip: padding-box !important;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+  }
+
+  .movie-detail::before {
+    position: absolute;
+    z-index: -1;
+    top: 0; right: 0; bottom: -20px; left: 0;
+    border: inherit;
+    border-color: transparent;
+    background: inherit;
+    background-clip: border-box !important;
+    content: '';
+    filter: blur(9px);
+    -webkit-filter: blur(9px);
+  }
+}
